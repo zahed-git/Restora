@@ -10,7 +10,7 @@ function App() {
       <div className="">
         <Nav></Nav>
         <div className="flex">
-        <div className="mx-auto space-y-10 mt-6">
+        <div className="mx-auto mt-14">
         {
           <Outlet></Outlet>
         }
