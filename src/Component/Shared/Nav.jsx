@@ -9,7 +9,7 @@ const Nav = () => {
   const {user,logOut}=useContext(AuthContext)
   const links = <>
     <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/'>Available Foods</NavLink></li>
+    <li><NavLink to='/availablefoods'>Available Foods</NavLink></li>
     {user &&
     <>
       <li><NavLink to='/addfoods'>Add Foods</NavLink></li>

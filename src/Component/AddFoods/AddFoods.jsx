@@ -30,11 +30,11 @@ const AddFoods = () => {
         const food_name = e.target.name.value;
         const pickup_location = e.target.pickup_location.value;
         const quantity = e.target.quantity.value;
-        const food_imag = e.target.donetorPhoto.value;
+        const image = e.target.donetorPhoto.value;
         const price = e.target.price.value;
         const expired_datetime = e.target.expired_datetime.value;
         const additional_notes = e.target.additional_notes.value;
-        const image = e.target.photo.value;
+        const  food_imag= e.target.photo.value;
         const donator_name = e.target.donatorName.value;
 
 
@@ -72,7 +72,7 @@ const AddFoods = () => {
                 <title>Resura||add-items</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
-            <section className="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
+            <section className="max-w-4xl p-6 mx-auto bg-slate-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
                 <h1 className="text-xl font-bold text-white capitalize dark:text-white">ADD NEW ITEMS </h1>
                 <form onSubmit={handleAddData}>
                     <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">

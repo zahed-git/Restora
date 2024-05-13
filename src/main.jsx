@@ -13,6 +13,8 @@ import { Toaster } from 'react-hot-toast';
 import LoggedIn from './Component/UsersLogInOut/LoggedIn.jsx';
 import LoggedUp from './Component/UsersLogInOut/LoggedUp.jsx';
 import AddFoods from './Component/AddFoods/AddFoods.jsx';
+import Available from './Component/Available/Available.jsx';
+import UpdateFoods from './Component/UpdateFoods/UpdateFoods.jsx';
 
 
 const router = createBrowserRouter([
@@ -36,6 +38,16 @@ const router = createBrowserRouter([
       {
         path: "/addfoods",
         element: <AddFoods />,
+      },
+      {
+        path: "/update/:_id",
+        element: <UpdateFoods />,
+        loader: ({params})=> fetch(`http://localhost:5000/foods/${params._id}`)
+      },
+      {
+        path: "/availablefoods",
+        element: <Available />,
+        loader:  ()=>fetch('http://localhost:5000/foods')
       },
     ],
   },
