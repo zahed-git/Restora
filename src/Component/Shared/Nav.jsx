@@ -12,7 +12,7 @@ const Nav = () => {
     <li><NavLink to='/'>Available Foods</NavLink></li>
     {user &&
     <>
-      <li><NavLink to='/'>Add Foods</NavLink></li>
+      <li><NavLink to='/addfoods'>Add Foods</NavLink></li>
       <li><NavLink to='/'>My Food Request</NavLink></li>
     </>
      } 

@@ -12,6 +12,7 @@ import AuthProvider from './Routs/AuthProvider.jsx';
 import { Toaster } from 'react-hot-toast';
 import LoggedIn from './Component/UsersLogInOut/LoggedIn.jsx';
 import LoggedUp from './Component/UsersLogInOut/LoggedUp.jsx';
+import AddFoods from './Component/AddFoods/AddFoods.jsx';
 
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/sinup",
         element: <LoggedUp />,
+      },
+      {
+        path: "/addfoods",
+        element: <AddFoods />,
       },
     ],
   },

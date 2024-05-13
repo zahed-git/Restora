@@ -9,7 +9,7 @@ const Footer = () => {
   <Link to={'/'}><img src={logo} alt="" className="h-full"/></Link>
   </div>
     <p className="font-bold">
-      Reatura Industries Ltd. <br/>Providing reliable food since 1992
+      Restura Industries Ltd. <br/>Providing reliable food since 1992
     </p> 
     <p>Copyright © 2024 - All right reserved</p>
   </aside> 
