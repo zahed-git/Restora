@@ -45,13 +45,12 @@ const AddFoods = () => {
             return toast.error('Pls provide All datas')
         }
         e.target.reset();
-        fetch('https://localhost:5000/foods', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newFood)
-
+        fetch('http://localhost:5000/foods',{
+           method:"POST",
+           headers: {
+            'content-type': 'application/json'
+           },
+           body: JSON.stringify(newFood) 
         })
             .then(res => res.json())
             .then(data => {
@@ -70,7 +69,7 @@ const AddFoods = () => {
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Add-Places</title>
+                <title>Resura||add-items</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <section className="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
