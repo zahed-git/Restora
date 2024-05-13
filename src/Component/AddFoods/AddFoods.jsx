@@ -6,9 +6,9 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Routs/AuthProvider";
 
 // ---------------------------------
-import DateTimePicker from 'react-datetime-picker';
-import 'react-calendar/dist/Calendar.css';
-import 'react-clock/dist/Clock.css';
+// import Dateexpired_datetimePicker from 'react-dateexpired_datetime-picker';
+// import 'react-calendar/dist/Calendar.css';
+// import 'react-clock/dist/Clock.css';
 
 
 
@@ -22,27 +22,27 @@ const AddFoods = () => {
 
 
     const { user } = useContext(AuthContext)
-    const userEmail = user.email
+    const userEmail = user?.email
     console.log(userEmail)
     // --------------------------------
     const handleAddData = (e) => {
         e.preventDefault()
         const food_name = e.target.name.value;
-        const location = e.target.location.value;
+        const pickup_location = e.target.pickup_location.value;
         const quantity = e.target.quantity.value;
-        const donetor_img = e.target.donetorPhoto.value;
-        const averageCost = e.target.cost.value;
-        const travel_Time = e.target.travel_time.value;
-        const description = e.target.description.value;
+        const food_imag = e.target.donetorPhoto.value;
+        const price = e.target.price.value;
+        const expired_datetime = e.target.expired_datetime.value;
+        const additional_notes = e.target.additional_notes.value;
         const image = e.target.photo.value;
         const donator_name = e.target.donatorName.value;
 
 
-        const newPlace = { userEmail, image, food_name, donetor_img, location, description, averageCost, quantity, travel_Time, donator_name }
-        console.log(newPlace)
+        const newFood = { userEmail, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name }
+        console.log(newFood)
 
-        if (!food_name || !location || !quantity || !donetor_img || !averageCost || !quantity || !travel_Time || !donator_name) {
-            return toast.error('Pls provide All dates')
+        if (!food_name || !pickup_location || !quantity || !food_imag || !price || !quantity || !expired_datetime || !donator_name) {
+            return toast.error('Pls provide All datas')
         }
         e.target.reset();
         fetch('https://localhost:5000/foods', {
@@ -50,14 +50,14 @@ const AddFoods = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newPlace)
+            body: JSON.stringify(newFood)
 
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 swal({
-                    title: "TOURIST SPOT ADDED",
+                    title: "New Food Item Added",
                     text: "sucessfully",
                     icon: "success",
                 });
@@ -83,8 +83,8 @@ const AddFoods = () => {
                         </div>
 
                         <div>
-                            <label className="text-white dark:text-gray-200" >PickUp Location</label>
-                            <input name="location" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                            <label className="text-white dark:text-gray-200" >PickUp location</label>
+                            <input name="pickup_location" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                         </div>
 
                         <div>
@@ -93,8 +93,8 @@ const AddFoods = () => {
                         </div>
 
                         <div>
-                            <label className="text-white dark:text-gray-200" >Travel Time</label>
-                            <input name="travel_time" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                            <label className="text-white dark:text-gray-200" >Expired Date & Time</label>
+                            <input name="expired_datetime" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                         </div>
                         <div>
                             <label className="text-white dark:text-gray-200" >Donetor Name</label>
@@ -108,12 +108,12 @@ const AddFoods = () => {
 
 
                         <div>
-                            <label className="text-white dark:text-gray-200" for="passwordConfirmation">Description</label>
-                            <textarea type="textarea" name="description" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                            <label className="text-white dark:text-gray-200" >Additional Notes</label>
+                            <textarea type="textarea" name="additional_notes" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
                         </div>
                         <div>
-                            <label className="text-white dark:text-gray-200" >Average Cost</label>
-                            <input name="cost" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                            <label className="text-white dark:text-gray-200" >Price</label>
+                            <input name="price" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                         </div>
                         <div>
                             <label className="text-white dark:text-gray-200" >Photo URL</label>
@@ -126,10 +126,10 @@ const AddFoods = () => {
                             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                 <div className="space-y-1 text-center">
                                     <svg className="mx-auto h-12 w-12 text-white" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" />
                                     </svg>
                                     <div className="flex text-sm text-gray-600">
-                                        <label for="file-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                        <label  className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                             <span className="">Upload a file</span>
                                             <input id="file-upload" name="file-upload" type="file" className="sr-only" />
                                         </label>
@@ -149,7 +149,7 @@ const AddFoods = () => {
                     <div className="bg-slate-300 btn w-full my-2 text-xl font-bold text-green-400">
 
                         <Link to={'/'}><button>Return to Home</button></Link>
-                        {/* <DateTimePicker onChange={onChange} value={value} /> */}
+                        {/* <Dateexpired_datetimePicker onChange={onChange} value={value} /> */}
                     </div>
                 </form>
             </section>

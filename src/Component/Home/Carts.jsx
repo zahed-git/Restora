@@ -3,6 +3,11 @@
 const Carts = () => {
     return (
         <div>
+            <div className="flex"
+                data-aos="zoom-in-up"
+                data-aos-offset="200">
+                <h1 className="mx-auto font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl ">Our Most Popular Items</h1>
+            </div>
             <div className="container mx-auto ">
                 <div className="sm:flex shadow-md my-10">
                     <div className="  w-full  sm:w-3/4 bg-white px-10 py-10">

@@ -35,29 +35,22 @@ const Home = () => {
         <div className="space-y-8">
             <Banner />
             <div data-aos="zoom-in-up"
-                data-aos-offset="200"><Wellcome /></div>
-            
-
-            <div className="flex"
+                data-aos-offset="50"><Wellcome /></div>
+                 <div
                 data-aos="zoom-in-up"
-                data-aos-offset="200">
-                <h1 className="mx-auto font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl ">Most Popular Items</h1>
+                data-aos-offset="50"><Carts />
             </div>
             <div
                 data-aos="zoom-in-up"
-                data-aos-offset="200"><Carts />
+                data-aos-offset="50"><Available />
             </div>
             <div
                 data-aos="zoom-in-up"
-                data-aos-offset="200"><Available />
+                data-aos-offset="50"><Shaffs />
             </div>
             <div
                 data-aos="zoom-in-up"
-                data-aos-offset="200"><Shaffs />
-            </div>
-            <div
-                data-aos="zoom-in-up"
-                data-aos-offset="200"><Client />
+                data-aos-offset="50"><Client />
             </div>
 
 
