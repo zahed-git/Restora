@@ -15,6 +15,7 @@ import LoggedUp from './Component/UsersLogInOut/LoggedUp.jsx';
 import AddFoods from './Component/AddFoods/AddFoods.jsx';
 import Available from './Component/Available/Available.jsx';
 import UpdateFoods from './Component/UpdateFoods/UpdateFoods.jsx';
+import Detail from './Component/Detail/Detail.jsx';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader:  ()=>fetch('http://localhost:5000/foods')
       },
       {
         path: "/sinin",
@@ -38,16 +40,22 @@ const router = createBrowserRouter([
       {
         path: "/addfoods",
         element: <AddFoods />,
+        loader:  ()=>fetch('http://localhost:5000/user')
       },
       {
         path: "/update/:_id",
         element: <UpdateFoods />,
-        loader: ({params})=> fetch(`http://localhost:5000/foods/${params._id}`)
+        // loader: (async, {params})=> fetch(`http://localhost:5000/foods/${params._id}`)
       },
       {
         path: "/availablefoods",
         element: <Available />,
         loader:  ()=>fetch('http://localhost:5000/foods')
+      },
+      {
+        path: "/detail/:_id",
+        element: <Detail />,
+        loader: ({params})=> fetch(`http://localhost:5000/foods/${params._id}`)
       },
     ],
   },

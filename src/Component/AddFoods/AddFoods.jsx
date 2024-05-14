@@ -1,29 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import swal from "sweetalert";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Routs/AuthProvider";
 
-// ---------------------------------
-// import Dateexpired_datetimePicker from 'react-dateexpired_datetime-picker';
-// import 'react-calendar/dist/Calendar.css';
-// import 'react-clock/dist/Clock.css';
+
 
 
 
 
 const AddFoods = () => {
-//     const ValuePiece = Date | null;
-
-// const Value = ValuePiece | [ValuePiece, ValuePiece];
-//     const [value, onChange] = useState<Value>(new Date());
+    //  
 
 
 
     const { user } = useContext(AuthContext)
     const userEmail = user?.email
     console.log(userEmail)
+    // const [currentUser,setCurrentUser]=useState({})
+const cUser =useLoaderData({})
+const currentUser = cUser?.find(user=> user.email === user.email)
+// setCurrentUser(searchByEmail)
+console.log(currentUser)
+const status="Available"
+
     // --------------------------------
     const handleAddData = (e) => {
         e.preventDefault()
@@ -34,23 +35,25 @@ const AddFoods = () => {
         const price = e.target.price.value;
         const expired_datetime = e.target.expired_datetime.value;
         const additional_notes = e.target.additional_notes.value;
-        const  food_imag= e.target.photo.value;
+        const food_imag = e.target.photo.value;
         const donator_name = e.target.donatorName.value;
+        const food_status = e.target.status.value
+        const userEmail= e.target.donetoreEmail.value
 
 
-        const newFood = { userEmail, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name }
+        const newFood = { userEmail, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name,food_status }
         console.log(newFood)
 
         if (!food_name || !pickup_location || !quantity || !food_imag || !price || !quantity || !expired_datetime || !donator_name) {
             return toast.error('Pls provide All datas')
         }
         e.target.reset();
-        fetch('http://localhost:5000/foods',{
-           method:"POST",
-           headers: {
-            'content-type': 'application/json'
-           },
-           body: JSON.stringify(newFood) 
+        fetch('http://localhost:5000/foods', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newFood)
         })
             .then(res => res.json())
             .then(data => {
@@ -97,12 +100,16 @@ const AddFoods = () => {
                         </div>
                         <div>
                             <label className="text-white dark:text-gray-200" >Donetor Name</label>
-                            <input name="donatorName" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                            <input name="donatorName" type="text"defaultValue={currentUser.name} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                         </div>
 
                         <div>
                             <label className="text-white dark:text-gray-200" >Donetor Photo Url</label>
-                            <input name="donetorPhoto" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                            <input name="donetorPhoto" type="text"defaultValue={currentUser.photoURL} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                        </div>
+                        <div>
+                            <label className="text-white dark:text-gray-200" >Donetor Email</label>
+                            <input name="donetoreEmail" type="text"defaultValue={currentUser.email} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                         </div>
 
 
@@ -113,6 +120,10 @@ const AddFoods = () => {
                         <div>
                             <label className="text-white dark:text-gray-200" >Price</label>
                             <input name="price" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                        </div>
+                        <div>
+                            <label className="text-white dark:text-gray-200" >Status</label>
+                            <input name="status" type="text" defaultValue={status} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                         </div>
                         <div>
                             <label className="text-white dark:text-gray-200" >Photo URL</label>
@@ -128,7 +139,7 @@ const AddFoods = () => {
                                         <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" />
                                     </svg>
                                     <div className="flex text-sm text-gray-600">
-                                        <label  className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                        <label className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                             <span className="">Upload a file</span>
                                             <input id="file-upload" name="file-upload" type="file" className="sr-only" />
                                         </label>

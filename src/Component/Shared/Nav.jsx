@@ -58,8 +58,8 @@ const handleLogOut = () => {
             <>
               <span className="text-sm font-bold">{user.photoURL ?
                 <>
-                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
+                  <div tabIndex={0} role="button" className="btn  btn-circle avatar">
+                    <div className="w-10 rounded-full duration-500 hover:scale-105 hover:shadow-xl">
                       {/* ---------------------------- */}
 
                       <a data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName}>

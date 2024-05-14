@@ -18,10 +18,11 @@ const FoodCarts = ({ food }) => {
 
                             <p className="text-sm text-gray-600  ml-2">{pickup_location}</p>
 
-                            <div className="ml-auto">
+                            
+                        </div>
+                        <div className="ml-auto">
                             <Link to={`/update/${_id}`}><button className="btn btn-primary mx-2">Update</button></Link>
                             </div>
-                        </div>
                     </div>
                 </a>
             </div>
