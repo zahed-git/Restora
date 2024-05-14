@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Routs/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import axios from "axios";
 
 const LoggedIn = () => {
     const navigate = useNavigate()
@@ -30,7 +31,7 @@ const LoggedIn = () => {
         singInUser(email, password)
             .then((userCredential) => {
                 setSucessMsg("Login successful")
-                navigate("/")
+                // navigate("/")
                 e.target.reset()
                 toast.success('Successfully Login')
                 // -------mongo---
@@ -38,17 +39,26 @@ const LoggedIn = () => {
                     email,
                     lastLoggedAt: userCredential.user?.metadata?.lastSignInTime
                 }
-                fetch('https://practiceserver-11.onrender.com/user', {
-                    method: 'PATCH',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
+                // fetch('https://practiceserver-11.onrender.com/user', {
+                //     method: 'PATCH',
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(user)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log(data);
+                //     })
+
+                // ----------axious-----jwt----?
+
+                axios.post("https://practiceserver-11.onrender.com/jwt",user,{withCredentials:true})
+                .then(res=>{
+                    console.log(res.data)
+                    navigate('/')
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                    })
+                // ----------axious---------?
             })
 
 
