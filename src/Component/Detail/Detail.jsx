@@ -7,35 +7,15 @@ import { ImCross } from "react-icons/im";
 import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 
 const Detail = () => {
-    // const food=useLoaderData({}) || {}
-
-    const { _id } = useParams()
-    const [items, setItems] = useState({})
+    const food = useLoaderData({}) || {}
     const [modal, setModal] = useState(false)
-    const { image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = items
-    const { register, handleSubmit } = useForm()
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch("http://localhost:5000/foods")
-            const data = await res.json()
-            const singledata = data?.find(item => item._id == _id)
-            setItems(singledata)
-        }
-        fetchData()
-    }, [_id])
+    const { _id, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = food
 
 
     const handleRequest = () => {
-        console.log(_id)
         setModal(!modal);
     };
 
-    // if(modal) {
-    //   document.body.classList.add('active-modal')
-    // } else {
-    //   document.body.classList.remove('active-modal')
-    // }
 
 
 
@@ -80,7 +60,7 @@ const Detail = () => {
                                             <td>{expired_datetime}</td>
                                         </tr>
                                         {/* row 3 */}
-                                       
+
 
 
 
@@ -89,17 +69,21 @@ const Detail = () => {
                             </div>
                             {/* -------------- */}
                         </div>
-                        <div className="card-actions justify-start">
+                        <div className="card-actions justify-between px-4">
 
                             <div>
                                 <Link to="section1" smooth={true} duration={500}>
                                     <button onClick={() => handleRequest(_id)} className="btn btn-primary">Request</button>
                                 </Link>
-                                {/* <Link to={`/update/${_id}`}><button className="btn btn-primary mx-2">Update</button></Link> */}
                             </div>
 
 
-                            <Link to={'/'}><button className="btn btn-primary">Return to Home</button></Link>
+                            <a href="#" className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded transition duration-150" title="Return Home">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" ></path>
+                                </svg>
+                                <Link to='/'> <span>Return Home</span></Link>
+                            </a>
 
                         </div>
                     </div>
@@ -155,7 +139,7 @@ const Detail = () => {
                                                 <label className="text-white dark:text-gray-200" >Expired Datetime</label>
                                                 <input disabled name="expired_datetime" type="text" defaultValue={expired_datetime} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                                             </div>
-                                            
+
                                             <div>
                                                 <label className="text-white dark:text-gray-200" >Photo URL</label>
                                                 <input disabled name="food_imag" type="text" defaultValue={food_imag} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
@@ -168,12 +152,12 @@ const Detail = () => {
                                         </div>
                                         <div className="bg-slate-300 btn w-full my-2 text-xl font-bold text-green-400">
 
-                                        <button onClick={handleRequest}>
-                                            
-                                            Back
-                                        </button>
+                                            <button onClick={handleRequest}>
+
+                                                Back
+                                            </button>
                                         </div>
-                                        
+
 
                                     </form>
                                 </section>

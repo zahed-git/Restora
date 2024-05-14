@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader:  ()=>fetch('http://localhost:5000/foods')
+        loader:  ()=>fetch('https://practiceserver-11.onrender.com/foods')
       },
       {
         path: "/sinin",
@@ -42,27 +42,27 @@ const router = createBrowserRouter([
       {
         path: "/addfoods",
         element:<Private> <AddFoods /></Private>,
-        loader:  ()=>fetch('http://localhost:5000/user')
+        loader:  ()=>fetch('https://practiceserver-11.onrender.com/user')
       },
       {
         path: "/update/:_id",
         element:<Private> <UpdateFoods /></Private>,
-        // loader: (async, {params})=> fetch(`http://localhost:5000/foods/${params._id}`)
+        loader: ( {params})=> fetch(`https://practiceserver-11.onrender.com/foods/${params._id}`)
       },
       {
         path: "/availablefoods",
         element: <Available />,
-        loader:  ()=>fetch('http://localhost:5000/foods')
+        loader:  ()=>fetch('https://practiceserver-11.onrender.com/foods')
       },
       {
         path: "/detail/:_id",
         element: <Detail />,
-        loader: ({params})=> fetch(`http://localhost:5000/foods/${params._id}`)
+        loader: ({params})=> fetch(`https://practiceserver-11.onrender.com/foods/${params._id}`)
       },
       {
         path: "/mylist",
         element:<Private> <Mylist /></Private>,
-        loader: ()=> fetch('http://localhost:5000/foods')
+        loader: ()=> fetch('https://practiceserver-11.onrender.com/foods')
       },
     ],
   },

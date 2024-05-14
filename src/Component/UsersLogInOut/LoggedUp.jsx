@@ -41,7 +41,7 @@ const LoggedUp = () => {
                 const createdAt = userCredential.user?.metadata?.creationTime
                 const user = { email, name: name, createdAt: createdAt, photoURL: photoURL }
                 console.log(user)
-                fetch('http://localhost:5000/user', {
+                fetch('https://practiceserver-11.onrender.com/user', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body:JSON.stringify(user)
@@ -74,7 +74,7 @@ const LoggedUp = () => {
                 const photoURL = result.user?.photoURL
                 const email = result.user?.email
                const user = { email, name: name, createdAt: createdAt, photoURL: photoURL }
-                fetch('http://localhost:5000/user', {
+                fetch('https://practiceserver-11.onrender.com/user', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(user)
@@ -107,7 +107,7 @@ const LoggedUp = () => {
                 const photoURL = result.user?.photoURL
                 const email = result.user?.email
                 const user = { email, name: name, createdAt: createdAt, photoURL: photoURL  }
-                fetch('http://localhost:5000/user', {
+                fetch('https://practiceserver-11.onrender.com/user', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(user)

@@ -6,20 +6,20 @@ import Swal from "sweetalert2";
 
 const UpdateFoods = () => {
     const navigate =useNavigate()
-    // const food =useLoaderData()
-    const [item,setItem]=useState({})
-const {_id} = useParams()
-    const { image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = item || {}
+    const food =useLoaderData()
+    // const [item,setItem]=useState({})
+// const {_id} = useParams()
+    const { _id,image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = food || {}
 
-useEffect(() => {
-    const fetchData = async () => {
-        const res = await fetch("http://localhost:5000/foods")
-        const data = await res.json()
-        const singledata = data?.find(item => item._id == _id)
-        setItem(singledata)
-    }
-    fetchData()
-}, [_id])
+// useEffect(() => {
+//     const fetchData = async () => {
+//         const res = await fetch("https://practiceserver-11.onrender.com")
+//         const data = await res.json()
+//         const singledata = data?.find(item => item._id == _id)
+//         setItem(singledata)
+//     }
+//     fetchData()
+// }, [_id])
 
     const handleUpdateData = (e) => {
         e.preventDefault()
@@ -54,7 +54,7 @@ Swal.fire({
 
 
         
-        fetch(`http://localhost:5000/foods/${_id}`,
+        fetch(`https://practiceserver-11.onrender.com/foods/${_id}`,
          {
             method: "PUT",
             headers: {

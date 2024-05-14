@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import swal from "sweetalert";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Routs/AuthProvider";
 
 
@@ -11,17 +11,11 @@ import { AuthContext } from "../../Routs/AuthProvider";
 
 
 const AddFoods = () => {
-    //  
-
-
-
     const { user } = useContext(AuthContext)
     const userEmail = user?.email
     console.log(userEmail)
-    // const [currentUser,setCurrentUser]=useState({})
 const cUser =useLoaderData({})
 const currentUser = cUser?.find(user=> user.email === user.email)
-// setCurrentUser(searchByEmail)
 console.log(currentUser)
 const status="Available"
 
@@ -48,7 +42,7 @@ const status="Available"
             return toast.error('Pls provide All datas')
         }
         e.target.reset();
-        fetch('http://localhost:5000/foods', {
+        fetch('https://practiceserver-11.onrender.com', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

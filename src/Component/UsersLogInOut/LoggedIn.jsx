@@ -38,7 +38,7 @@ const LoggedIn = () => {
                     email,
                     lastLoggedAt: userCredential.user?.metadata?.lastSignInTime
                 }
-                fetch('http://localhost:5000/user', {
+                fetch('https://practiceserver-11.onrender.com/user', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'
@@ -70,7 +70,7 @@ const LoggedIn = () => {
                     email,
                     lastLoggedAt: userCredential.user?.metadata?.lastSignInTime
                 }
-                fetch('http://localhost:5000/user', {
+                fetch('https://practiceserver-11.onrender.com/user', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'
@@ -99,7 +99,7 @@ const LoggedIn = () => {
                     email,
                     lastLoggedAt: userCredential.user?.metadata?.lastSignInTime
                 }
-                fetch('http://localhost:5000/user', {
+                fetch('https://practiceserver-11.onrender.com/user', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'

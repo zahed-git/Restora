@@ -11,7 +11,7 @@ const Available = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await fetch("http://localhost:5000/foods")
+            const res = await fetch("https://practiceserver-11.onrender.com/foods")
             const data = await res.json()
             setFoods(data)
             setItems(data)

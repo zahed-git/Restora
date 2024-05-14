@@ -10,7 +10,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Home = () => {
-    const foods = useLoaderData([]) || []
+    const foods = useLoaderData([]) 
+    console.log(foods)
     AOS.init({
         // Global settings:
         disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
