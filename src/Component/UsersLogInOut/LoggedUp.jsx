@@ -189,7 +189,6 @@ const LoggedUp = () => {
                                         id="exampleFormControlInput2"
                                         placeholder="" />
                                     <label
-                                        for="exampleFormControlInput2"
                                         className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
                                     >Name
                                     </label>
@@ -203,7 +202,6 @@ const LoggedUp = () => {
                                         id="exampleFormControlInput2"
                                         placeholder="" />
                                     <label
-                                        for="exampleFormControlInput2"
                                         className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
                                     >Email address
                                     </label>
@@ -217,7 +215,6 @@ const LoggedUp = () => {
                                         id="exampleFormControlInput2"
                                         placeholder="" />
                                     <label
-                                        for="exampleFormControlInput2"
                                         className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
                                     >Photo URL
                                     </label>
@@ -236,7 +233,7 @@ const LoggedUp = () => {
                                         id="exampleFormControlInput22"
                                         placeholder="" />
                                     <label
-                                        for="exampleFormControlInput22"
+                                        
                                         className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
                                     >Password
                                     </label>
@@ -250,8 +247,7 @@ const LoggedUp = () => {
                                             value=""
                                             id="exampleCheck2" />
                                         <label
-                                            className="inline-block ps-[0.15rem] hover:cursor-pointer"
-                                            for="exampleCheck2">
+                                            className="inline-block ps-[0.15rem] hover:cursor-pointer">
                                             Remember me
                                         </label>
                                     </div>
