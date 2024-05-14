@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 
 
-const FoodCarts = ({ food }) => {
-
-    const { _id,userEmail, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = food
+const ListCard = ({item}) => {
+    const { _id,userEmail, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = item
     return (
         <div>
             <div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
@@ -20,8 +19,9 @@ const FoodCarts = ({ food }) => {
 
                             
                         </div>
-                        <div className="mx-auto">
-                            <Link to={`/detail/${_id}`}><button className="btn btn-primary  w-full">View Detail</button></Link>
+                        <div className="ml-auto">
+                            <Link to={`/update/${_id}`}><button className="btn btn-primary mx-2">Delete</button></Link>
+                            <Link to={`/update/${_id}`}><button className="btn btn-primary mx-2">Update</button></Link>
                             </div>
                     </div>
                 </a>
@@ -30,4 +30,4 @@ const FoodCarts = ({ food }) => {
     );
 };
 
-export default FoodCarts;
+export default ListCard;

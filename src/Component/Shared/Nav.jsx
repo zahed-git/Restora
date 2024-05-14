@@ -13,7 +13,7 @@ const Nav = () => {
     {user &&
     <>
       <li><NavLink to='/addfoods'>Add Foods</NavLink></li>
-      <li><NavLink to='/'>My Food Request</NavLink></li>
+      <li><NavLink to='/mylist'>My Food Request</NavLink></li>
     </>
      } 
     <li><NavLink to='/'>Blog</NavLink></li>

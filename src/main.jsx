@@ -16,6 +16,8 @@ import AddFoods from './Component/AddFoods/AddFoods.jsx';
 import Available from './Component/Available/Available.jsx';
 import UpdateFoods from './Component/UpdateFoods/UpdateFoods.jsx';
 import Detail from './Component/Detail/Detail.jsx';
+import Mylist from './Component/MyList/Mylist.jsx';
+import Private from './Routs/Private.jsx';
 
 
 const router = createBrowserRouter([
@@ -39,12 +41,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/addfoods",
-        element: <AddFoods />,
+        element:<Private> <AddFoods /></Private>,
         loader:  ()=>fetch('http://localhost:5000/user')
       },
       {
         path: "/update/:_id",
-        element: <UpdateFoods />,
+        element:<Private> <UpdateFoods /></Private>,
         // loader: (async, {params})=> fetch(`http://localhost:5000/foods/${params._id}`)
       },
       {
@@ -56,6 +58,11 @@ const router = createBrowserRouter([
         path: "/detail/:_id",
         element: <Detail />,
         loader: ({params})=> fetch(`http://localhost:5000/foods/${params._id}`)
+      },
+      {
+        path: "/mylist",
+        element:<Private> <Mylist /></Private>,
+        loader: ()=> fetch('http://localhost:5000/foods')
       },
     ],
   },
