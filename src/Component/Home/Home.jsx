@@ -1,7 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-import Available from "../Available/Available";
 import Banner from "../Banner/Banner";
-import LoggedIn from "../UsersLogInOut/LoggedIn";
 import Carts from "./Carts";
 import Client from "./Client";
 import Shaffs from "./Shaffs";
@@ -71,9 +69,6 @@ const Home = () => {
                 data-aos="zoom-in-up"
                 data-aos-offset="50"><Client />
             </div>
-
-
-
 
         </div>
     );

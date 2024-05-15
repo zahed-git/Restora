@@ -16,7 +16,7 @@ const Nav = () => {
       <li><NavLink to='/mylist'>My Food Request</NavLink></li>
     </>
      } 
-    <li><NavLink to='/'>Blog</NavLink></li>
+    <li><NavLink to='/blog'>Blog</NavLink></li>
   </>
 
 const handleLogOut = () => {

@@ -18,6 +18,7 @@ import UpdateFoods from './Component/UpdateFoods/UpdateFoods.jsx';
 import Detail from './Component/Detail/Detail.jsx';
 import Mylist from './Component/MyList/Mylist.jsx';
 import Private from './Routs/Private.jsx';
+import Blog from './Component/Blog/Blog.jsx';
 
 
 const router = createBrowserRouter([
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/mylist",
         element:<Private> <Mylist /></Private>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
     ],
   },
