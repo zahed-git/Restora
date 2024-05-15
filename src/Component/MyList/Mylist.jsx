@@ -7,8 +7,11 @@ import ListCard from "./ListCard";
 const Mylist = () => {
 
     const { user } = useContext(AuthContext)
-    const data = useLoaderData([])
-    const userData = data.filter(data => data.userEmail == user.email)
+    const datas = useLoaderData([])
+    const userData = datas.filter(data => data.userEmail == user.email)
+    console.log(user.email)
+    console.log(datas )
+    console.log(datas[0].userEmail )
     console.log(userData)
 
     return (

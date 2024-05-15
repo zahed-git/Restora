@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       {
         path: "/mylist",
         element:<Private> <Mylist /></Private>,
-        loader: ()=> fetch('https://practiceserver-11.onrender.com/foods')
+        loader: ()=> fetch('https://practiceserver-11.onrender.com/orders')
       },
     ],
   },

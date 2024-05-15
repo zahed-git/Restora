@@ -19,7 +19,7 @@ const ListCard = ({ item }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://practiceserver-11.onrender.com/foods/${_id}`, {
+                fetch(`http://localhost:5000/orders/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

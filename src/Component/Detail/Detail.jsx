@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form"
@@ -6,7 +6,13 @@ import './Detail.css'
 import { ImCross } from "react-icons/im";
 import { Link, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 
+import swal from "sweetalert";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../Routs/AuthProvider";
+
 const Detail = () => {
+    
+    const {user}=useContext(AuthContext)
     const food = useLoaderData({}) || {}
     const [modal, setModal] = useState(false)
     const { _id, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = food
@@ -16,8 +22,48 @@ const Detail = () => {
         setModal(!modal);
     };
 
+    // ----------------------------
+    const handleAddOrder = (e) => {
+        e.preventDefault()
+        // const food_name = e.target.name.value;
+        const food_name = e.target.food_name.value
+        const pickup_location = e.target.pickup_location.value;
+        const quantity = e.target.quantity.value;
+        const image = e.target.donetorPhoto.value;
+        const price = e.target.price.value;
+        const expired_datetime = e.target.expired_datetime.value;
+        const additional_notes = e.target.additional_notes.value;
+        const food_imag = e.target.food_imag.value;
+        const donator_name = e.target.donatorName.value;
+        const userEmail = e.target.userEmail.value
+        console.log(userEmail, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name )
 
+        const newOrders = { userEmail, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name}
+        console.log(newOrders)
 
+        // if (!food_name || !pickup_location || !quantity || !food_imag || !price || !quantity || !expired_datetime || !donator_name) {
+        //     return toast.error('Pls provide All datas')
+        // }
+        e.target.reset();
+        fetch('http://localhost:5000/orders', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newOrders)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                e.target.reset();
+                handleRequest()
+                swal({
+                    title: "New Food Order Added",
+                    text: "sucessfully",
+                    icon: "success",
+                });
+            })
+    }
 
     return (
         <div>
@@ -98,8 +144,8 @@ const Detail = () => {
                             <div className="modal-content">
                                 <section className="max-w-4xl mt-96 p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 ">
                                     <h1 className="text-xl font-bold text-white capitalize dark:text-white">Update Your Food Items</h1>
-                                    {/* <form onSubmit={handleUpdateData}> */}
-                                    <form >
+
+                                    <form onSubmit={handleAddOrder}>
                                         <div className="grid grid-cols-1 gap-6  sm:grid-cols-2">
                                             <div>
                                                 <label className="text-white dark:text-gray-200" >Food Name</label>
@@ -118,17 +164,22 @@ const Detail = () => {
 
                                             <div>
                                                 <label className="text-white dark:text-gray-200" >Donator Name</label>
-                                                <input disabled name="donator_name" defaultValue={donator_name} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                                                <input disabled name="donatorName" defaultValue={donator_name} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                                             </div>
                                             <div>
                                                 <label className="text-white dark:text-gray-200" >Donetor Photo</label>
                                                 <input disabled name="donetorPhoto" defaultValue={image} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                                            </div>
+                                            <div>
+                                                <label className="text-white dark:text-gray-200" >Email</label>
+                                                <input disabled name="userEmail" defaultValue={user.email} type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                                             </div>
 
                                             <div>
                                                 <label className="text-white dark:text-gray-200" >Price</label>
                                                 <input disabled name="price" type="text" defaultValue={price} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                                             </div>
+                                            
 
 
                                             <div>
@@ -148,7 +199,7 @@ const Detail = () => {
                                         </div>
 
                                         <div className="flex mt-6  text-xl p-2 justify-center rounded-xl bg-lime-400 btn">
-                                            <input type="submit" value="Request" />
+                                            <input type="submit" value="Submit" />
                                         </div>
                                         <div className="bg-slate-300 btn w-full my-2 text-xl font-bold text-green-400">
 

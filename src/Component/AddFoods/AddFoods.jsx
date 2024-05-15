@@ -153,7 +153,6 @@ const status="Available"
                     <div className="bg-slate-300 btn w-full my-2 text-xl font-bold text-green-400">
 
                         <Link to={'/'}><button>Return to Home</button></Link>
-                        {/* <Dateexpired_datetimePicker onChange={onChange} value={value} /> */}
                     </div>
                 </form>
             </section>
