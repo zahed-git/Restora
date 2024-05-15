@@ -39,12 +39,12 @@ const LoggedIn = () => {
                     email,
                     lastLoggedAt: userCredential.user?.metadata?.lastSignInTime
                 }
+                navigate('/')
 
-
-                axios.post("http://localhost:5000/jwt",user,{withCredentials:true})
+                axios.post("https://practiceserver-11.onrender.com/jwt",user,{withCredentials:true})
                 .then(res=>{
                     console.log(res.data)
-                    navigate('/')
+                   
                 })
                 // ----------axious---------?
             })

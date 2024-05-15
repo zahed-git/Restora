@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import FoodCarts from "./FoodCarts";
-import { key } from "localforage";
 import Aos from "aos";
 import axios from "axios";
 
@@ -10,17 +9,9 @@ const Available = () => {
     const [foods, setFoods] = useState()
     const [items, setItems] = useState()
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const res = await fetch("https://practiceserver-11.onrender.com/foods")
-    //         const data = await res.json()
-    //         setFoods(data)
-    //         setItems(data)
-    //     }
-    //     fetchData()
-    // }, [])
+
     // -----------------axios--------?
-    const url = 'http://localhost:5000/foods'
+    const url = 'https://practiceserver-11.onrender.com/foods'
     useEffect(() => {
         axios.get(url,{withCredentials:true})
             .then(res => {
