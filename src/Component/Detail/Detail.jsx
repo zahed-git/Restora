@@ -45,7 +45,7 @@ const Detail = () => {
         //     return toast.error('Pls provide All datas')
         // }
         e.target.reset();
-        fetch('http://localhost:5000/orders', {
+        fetch('https://practiceserver-11.onrender.com/orders', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

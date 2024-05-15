@@ -20,7 +20,7 @@ const Available = () => {
     //     fetchData()
     // }, [])
     // -----------------axios--------?
-    const url = 'http://localhost:5000/foods'
+    const url = 'https://practiceserver-11.onrender.com/foods'
     useEffect(() => {
         axios.get(url,{withCredentials:true})
             .then(res => {
