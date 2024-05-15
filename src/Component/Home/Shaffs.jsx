@@ -8,7 +8,7 @@ const Shaffs = () => {
 
   <section className="mb-32 text-center">
     <h2 className="mb-32 text-3xl font-bold">
-    Our Master Chefs <u className="text-primary dark:text-primary-400">Chefs</u>
+    Our Master <u className="text-primary dark:text-primary-400">Chefs</u>
     </h2>
 
     <div className="grid gap-x-6 md:grid-cols-3 lg:gap-x-12">

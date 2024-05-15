@@ -20,14 +20,14 @@ const Available = () => {
     //     fetchData()
     // }, [])
     // -----------------axios--------?
-    const url = 'https://practiceserver-11.onrender.com/foods'
+    const url = 'http://localhost:5000/foods'
     useEffect(() => {
         axios.get(url,{withCredentials:true})
             .then(res => {
                 setFoods(res.data)
                 setItems(res.data)
             })
-    }, [url])
+    }, [])
     // -----------------axios--------?
 
     const sortBydate = () => {
