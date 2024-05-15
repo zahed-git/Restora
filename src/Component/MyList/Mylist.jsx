@@ -1,19 +1,27 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Routs/AuthProvider";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ListCard from "./ListCard";
 
 
 const Mylist = () => {
 
     const { user } = useContext(AuthContext)
-    const datas = useLoaderData([])
-    const userData = datas.filter(data => data.userEmail == user.email)
-    console.log(user.email)
-    console.log(datas )
-    console.log(datas[0].userEmail )
-    console.log(userData)
+    const email=user.email
+const [userData,setUserdata]=useState([])
+    
 
+useEffect(() => {
+    const fetchData = async () => {
+        const res = await fetch("https://practiceserver-11.onrender.com/orders")
+        const datas = await res.json()
+        const userDatas =datas && datas.filter(data => data.userEmail == user.email)
+        setUserdata(userDatas)
+    }
+    fetchData()
+}, [email])
+
+     
     return (
         <div>
             <div

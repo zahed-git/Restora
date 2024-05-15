@@ -39,19 +39,7 @@ const LoggedIn = () => {
                     email,
                     lastLoggedAt: userCredential.user?.metadata?.lastSignInTime
                 }
-                // fetch('https://practiceserver-11.onrender.com/user', {
-                //     method: 'PATCH',
-                //     headers: {
-                //         'content-type': 'application/json'
-                //     },
-                //     body: JSON.stringify(user)
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         console.log(data);
-                //     })
 
-                // ----------axious-----jwt----?
 
                 axios.post("http://localhost:5000/jwt",user,{withCredentials:true})
                 .then(res=>{
