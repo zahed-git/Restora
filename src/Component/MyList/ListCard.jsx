@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 
 const ListCard = ({ item }) => {
-    const { _id, userEmail, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = item || {}
+    const { _id, image, food_name, food_imag, pickup_location, additional_notes, price, quantity, expired_datetime, donator_name } = item || {}
     //    -----------------------
     const handleDelete = (_id) => {
 

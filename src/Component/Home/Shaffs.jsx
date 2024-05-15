@@ -23,7 +23,7 @@ const Shaffs = () => {
           </div>
           <div className="p-6">
             <h5 className="mb-4 text-lg font-bold">Marta Smith</h5>
-            <p className="mb-6">Frontend Developer</p>
+            <p className="mb-6">Food Runner</p>
             <ul className="mx-auto flex list-inside justify-center">
               <a href="#!" className="px-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ const Shaffs = () => {
           </div>
           <div className="p-6">
             <h5 className="mb-4 text-lg font-bold">Darren Randolph</h5>
-            <p className="mb-6">Marketing expert</p>
+            <p className="mb-6">Kitchen Manager</p>
             <ul className="mx-auto flex list-inside justify-center">
               <a href="#!" className="px-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-primary dark:text-primary-400"
@@ -101,7 +101,7 @@ const Shaffs = () => {
           </div>
           <div className="p-6">
             <h5 className="mb-4 text-lg font-bold">Ayat Black</h5>
-            <p className="mb-6">Web designer</p>
+            <p className="mb-6">Expeditor</p>
             <ul className="mx-auto flex list-inside justify-center">
               <a href="#!" className="px-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
